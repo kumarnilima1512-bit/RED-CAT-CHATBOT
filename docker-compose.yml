@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  chatbot:
+    build: .
+    ports:
+      - "3002:3000"
+    
+    restart: on-failure:3
+    env_file:
+      - .env
+    volumes:
+      # Optional: mount for development hot-reload
+      # - ./:/app
+      # - /app/node_modules
+      # - /app/.nuxt
+      - logs:/app/logs
+    
+
+volumes:
+  logs:
